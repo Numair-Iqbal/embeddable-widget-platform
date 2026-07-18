@@ -12,7 +12,7 @@ Built as the capstone project for the **FlyRank AI — Backend Engineering Inter
 ![PostgreSQL](https://img.shields.io/badge/database-Supabase%20Postgres-3ecf8e?style=flat-square&logo=supabase&logoColor=white)
 ![Jest](https://img.shields.io/badge/tested%20with-Jest-C21325?style=flat-square&logo=jest&logoColor=white)
 
-[Overview](#overview) • [Architecture](#architecture) • [Features](#features) • [Setup](#getting-started) • [API](#api-endpoints) • [Testing](#testing) • [Screenshots](#screenshots)
+[Overview](#overview) • [Report](#-full-project-report) • [Architecture](#architecture) • [Features](#features) • [Setup](#getting-started) • [API](#api-endpoints) • [Testing](#testing) • [Screenshots](#screenshots)
 
 </div>
 
@@ -23,6 +23,12 @@ Built as the capstone project for the **FlyRank AI — Backend Engineering Inter
 Any website can drop in a single `<script>` tag to render a widget — a signup form, a promotional popover, or a call-to-action. Every visitor submission is captured, spam-filtered, rate-limited, and geo-enriched in real time, then made available in a secure, owner-only dashboard where the widget's owner can search, filter, edit, delete, and export their data.
 
 The project was built end-to-end: schema design → REST API → auth & security → owner dashboard → automated test suite, matching the exact "Definition of Done" set out in the FlyRank capstone brief (CORS handling, payload validation, rate limiting, geo-provider fallback — all covered by dedicated automated tests).
+
+## 📄 Full Project Report
+
+A complete, professional write-up of this project is available as a PDF — covering background, objectives, requirements, system architecture, database design, the full API reference, security measures, automated testing, and a full screenshot walkthrough.
+
+**📎 [Read the full report — docs/capstone-project-report.pdf](docs/capstone-project-report.pdf)**
 
 ## Architecture
 
@@ -69,7 +75,8 @@ src/
   public/dashboard/        # login.html, index.html, widget-detail.html, widget.js
   __tests__/                # Jest test suites (auth, widgets, submissions, cors, geo)
 docs/
-  architecture-diagram.svg   # system architecture diagram
+  capstone-project-report.pdf  # full written project report
+  architecture-diagram.svg     # system architecture diagram
   api-collection.postman_collection.json
 server.js
 ```
@@ -164,9 +171,6 @@ Tests:       41 passed, 41 total
 
 The full API is documented and testable via a Postman collection (`docs/api-collection.postman_collection.json`), organized into **Auth**, **Widgets**, and **Submissions** folders, with example responses recorded for each request:
 
-<p align="center">
-  <img src="docs/postman-screenshot.png" alt="Postman Documentation" width="850">
-</p>
 
 | Request | Result |
 |---|---|
