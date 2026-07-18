@@ -24,14 +24,17 @@ Any website can drop in a single `<script>` tag to render a widget — a signup 
 
 The project was built end-to-end: schema design → REST API → auth & security → owner dashboard → automated test suite, matching the exact "Definition of Done" set out in the FlyRank capstone brief (CORS handling, payload validation, rate limiting, geo-provider fallback — all covered by dedicated automated tests).
 
-## Full Project Report
+## 📄 Full Project Report
 
-A complete technical report of this project is available as a PDF. It covers system architecture, database design, API structure, security, and testing.
+A complete technical report of this project is available as a PDF. It includes system architecture, database design, API structure, security implementation, and testing.
 
-Important: GitHub may not display the PDF correctly. Please download the file to view it.
+> ⚠️ Note: GitHub may not display the PDF correctly. Please download the file to view it.
 
-👉 Download Full Report (PDF):  
-docs/capstone-project-report.pdf
+<p align="center">
+  <a href="docs/capstone-project-report.pdf">
+    <img src="https://img.shields.io/badge/Download%20Report-PDF-blue?style=for-the-badge&logo=adobeacrobatreader" />
+  </a>
+</p>
 
 ## Architecture
 
