@@ -26,15 +26,17 @@ The project was built end-to-end: schema design → REST API → auth & security
 
 ## 📄 Full Project Report
 
-A complete technical report of this project is available as a PDF. It includes system architecture, database design, API structure, security implementation, and testing.
+A complete technical report of this project is available as a PDF.
 
-> ⚠️ Note: GitHub may not display the PDF correctly. Please download the file to view it.
+It includes:
+- Background and objectives  
+- System architecture  
+- Database design  
+- API reference  
+- Security implementation  
+- Testing and results  
 
-<p align="center">
-  <a href="docs/capstone-project-report.pdf">
-    <img src="https://img.shields.io/badge/Download%20Full%20Report-PDF-blue?style=for-the-badge&logo=adobeacrobatreader" />
-  </a>
-</p>
+**📎 [View Full Report](docs/capstone-project-report.pdf)**
 
 ## Architecture
 
