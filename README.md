@@ -32,7 +32,7 @@ A complete technical report of this project is available as a PDF. It includes s
 
 <p align="center">
   <a href="docs/capstone-project-report.pdf">
-    <img src="https://img.shields.io/badge/Download%20Report-PDF-blue?style=for-the-badge&logo=adobeacrobatreader" />
+    <img src="https://img.shields.io/badge/Download%20Full%20Report-PDF-blue?style=for-the-badge&logo=adobeacrobatreader" />
   </a>
 </p>
 
