@@ -1,0 +1,134 @@
+<svg viewBox="0 0 1200 980" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="980" fill="#f8fafc"/>
+
+  <text x="600" y="42" text-anchor="middle" font-size="26" font-weight="800" fill="#1e1b4b">Embeddable Widget Platform — Architecture</text>
+  <text x="600" y="66" text-anchor="middle" font-size="13" fill="#64748b">FlyRank AI Capstone — Numair Iqbal</text>
+
+  <!-- Layer label helper style -->
+  <!-- ===== Row 1: Clients ===== -->
+  <rect x="60" y="96" width="360" height="90" rx="14" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="240" y="130" text-anchor="middle" font-size="16" font-weight="700" fill="#3730a3">Visitor's Website</text>
+  <text x="240" y="150" text-anchor="middle" font-size="12" fill="#4338ca">embeds widget.js</text>
+  <text x="240" y="168" text-anchor="middle" font-size="12" fill="#4338ca">submits form data</text>
+
+  <rect x="780" y="96" width="360" height="90" rx="14" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="960" y="130" text-anchor="middle" font-size="16" font-weight="700" fill="#3730a3">Owner Dashboard (Browser)</text>
+  <text x="960" y="150" text-anchor="middle" font-size="12" fill="#4338ca">index.html / widget-detail.html</text>
+  <text x="960" y="168" text-anchor="middle" font-size="12" fill="#4338ca">login, manage widgets &amp; submissions</text>
+
+  <line x1="240" y1="186" x2="240" y2="222" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="960" y1="186" x2="960" y2="222" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="255" y="208" font-size="11" fill="#475569">POST /widgets/:id/submissions</text>
+  <text x="835" y="208" font-size="11" fill="#475569">JWT Bearer token on every request</text>
+
+  <!-- ===== Row 2: Express API layer ===== -->
+  <rect x="60" y="230" width="1080" height="150" rx="14" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+  <text x="600" y="254" text-anchor="middle" font-size="15" font-weight="700" fill="#0e7490">Express API — src/server.js</text>
+
+  <rect x="90" y="270" width="230" height="88" rx="10" fill="#ffffff" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="205" y="292" text-anchor="middle" font-size="12.5" font-weight="700" fill="#155e75">Middleware</text>
+  <text x="205" y="310" text-anchor="middle" font-size="11" fill="#334155">CORS (allowlist)</text>
+  <text x="205" y="326" text-anchor="middle" font-size="11" fill="#334155">Rate limiter (5 / 15 min)</text>
+  <text x="205" y="342" text-anchor="middle" font-size="11" fill="#334155">JWT auth.middleware.js</text>
+
+  <rect x="335" y="270" width="230" height="88" rx="10" fill="#ffffff" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="450" y="292" text-anchor="middle" font-size="12.5" font-weight="700" fill="#155e75">auth.routes.js</text>
+  <text x="450" y="312" text-anchor="middle" font-size="11" fill="#334155">POST /auth/register</text>
+  <text x="450" y="330" text-anchor="middle" font-size="11" fill="#334155">POST /auth/login</text>
+
+  <rect x="580" y="270" width="230" height="88" rx="10" fill="#ffffff" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="695" y="292" text-anchor="middle" font-size="12.5" font-weight="700" fill="#155e75">widgets.routes.js</text>
+  <text x="695" y="312" text-anchor="middle" font-size="11" fill="#334155">CRUD /widgets, /widgets/:id</text>
+  <text x="695" y="330" text-anchor="middle" font-size="11" fill="#334155">GET /owners/me/stats</text>
+
+  <rect x="825" y="270" width="285" height="88" rx="10" fill="#ffffff" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="967" y="292" text-anchor="middle" font-size="12.5" font-weight="700" fill="#155e75">submissions.routes.js / config.routes.js</text>
+  <text x="967" y="312" text-anchor="middle" font-size="11" fill="#334155">POST/GET/PATCH/DELETE submissions</text>
+  <text x="967" y="330" text-anchor="middle" font-size="11" fill="#334155">GET public widget config</text>
+
+  <line x1="600" y1="380" x2="600" y2="416" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ===== Row 3: Services layer ===== -->
+  <rect x="60" y="424" width="1080" height="140" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="600" y="448" text-anchor="middle" font-size="15" font-weight="700" fill="#166534">Services — business logic (src/services)</text>
+
+  <rect x="90" y="464" width="190" height="80" rx="10" fill="#ffffff" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="185" y="490" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">auth.service.js</text>
+  <text x="185" y="508" text-anchor="middle" font-size="10.5" fill="#334155">bcrypt hash + JWT sign</text>
+
+  <rect x="295" y="464" width="190" height="80" rx="10" fill="#ffffff" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="390" y="490" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">widgets.service.js</text>
+  <text x="390" y="508" text-anchor="middle" font-size="10.5" fill="#334155">validate + CRUD rules</text>
+
+  <rect x="500" y="464" width="230" height="80" rx="10" fill="#ffffff" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="615" y="490" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">submissions.service.js</text>
+  <text x="615" y="508" text-anchor="middle" font-size="10.5" fill="#334155">honeypot, size limit,</text>
+  <text x="615" y="522" text-anchor="middle" font-size="10.5" fill="#334155">owner stats, owner isolation</text>
+
+  <rect x="745" y="464" width="180" height="80" rx="10" fill="#ffffff" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="835" y="490" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">geo.service.js</text>
+  <text x="835" y="508" text-anchor="middle" font-size="10.5" fill="#334155">provider fallback chain</text>
+
+  <rect x="940" y="464" width="170" height="80" rx="10" fill="#ffffff" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="1025" y="490" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">notification.service.js</text>
+  <text x="1025" y="508" text-anchor="middle" font-size="10.5" fill="#334155">owner alert (safe/no-throw)</text>
+
+  <!-- geo provider fallback branch to the right -->
+  <line x1="925" y1="504" x2="1050" y2="504" stroke="#94a3b8" stroke-width="0" />
+  <line x1="835" y1="464" x2="835" y2="600" stroke="#f97316" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="700" y="600" width="270" height="70" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="835" y="624" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">External Geo Providers</text>
+  <text x="835" y="642" text-anchor="middle" font-size="10.5" fill="#7c2d12">1st: ip-api.com  →  down?</text>
+  <text x="835" y="656" text-anchor="middle" font-size="10.5" fill="#7c2d12">2nd (fallback): ipapi.co</text>
+
+  <line x1="600" y1="564" x2="600" y2="600" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ===== Row 4: Repositories layer ===== -->
+  <rect x="60" y="608" width="600" height="100" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="360" y="632" text-anchor="middle" font-size="15" font-weight="700" fill="#991b1b">Repositories — raw SQL (src/repositories)</text>
+
+  <rect x="90" y="648" width="170" height="46" rx="8" fill="#ffffff" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="175" y="676" text-anchor="middle" font-size="11.5" fill="#7f1d1d">owners.repository.js</text>
+
+  <rect x="275" y="648" width="170" height="46" rx="8" fill="#ffffff" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="360" y="676" text-anchor="middle" font-size="11.5" fill="#7f1d1d">widgets.repository.js</text>
+
+  <rect x="460" y="648" width="180" height="46" rx="8" fill="#ffffff" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="550" y="676" text-anchor="middle" font-size="11.5" fill="#7f1d1d">submissions.repository.js</text>
+
+  <line x1="360" y1="708" x2="360" y2="744" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ===== Row 5: Database ===== -->
+  <rect x="60" y="752" width="600" height="110" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="360" y="778" text-anchor="middle" font-size="15" font-weight="700" fill="#5b21b6">Supabase (PostgreSQL)</text>
+  <rect x="90" y="792" width="150" height="50" rx="8" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="165" y="814" text-anchor="middle" font-size="11.5" font-weight="600" fill="#5b21b6">owners</text>
+  <text x="165" y="830" text-anchor="middle" font-size="9.5" fill="#6d28d9">id, email, password_hash</text>
+
+  <rect x="255" y="792" width="180" height="50" rx="8" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="345" y="814" text-anchor="middle" font-size="11.5" font-weight="600" fill="#5b21b6">widgets</text>
+  <text x="345" y="830" text-anchor="middle" font-size="9.5" fill="#6d28d9">owner_id FK, is_active, fields</text>
+
+  <rect x="450" y="792" width="190" height="50" rx="8" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="545" y="814" text-anchor="middle" font-size="11.5" font-weight="600" fill="#5b21b6">submissions</text>
+  <text x="545" y="830" text-anchor="middle" font-size="9.5" fill="#6d28d9">widget_id FK, data, geo, is_spam</text>
+
+  <!-- ===== Legend / testing note box on the right side ===== -->
+  <rect x="720" y="752" width="420" height="150" rx="14" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="740" y="778" font-size="13" font-weight="700" fill="#1e293b">Automated Tests (Jest + Supertest)</text>
+  <text x="740" y="800" font-size="11" fill="#334155">• auth.test.js — register / login / auth guard</text>
+  <text x="740" y="818" font-size="11" fill="#334155">• widgets.test.js — CRUD + owner isolation</text>
+  <text x="740" y="836" font-size="11" fill="#334155">• submissions.test.js — spam, size limit, rate limit</text>
+  <text x="740" y="854" font-size="11" fill="#334155">• cors.test.js — preflight allow / deny</text>
+  <text x="740" y="872" font-size="11" fill="#334155">• geo.test.js — provider fallback (mocked fetch)</text>
+  <text x="740" y="892" font-size="10.5" fill="#64748b" font-style="italic">41/41 passing</text>
+
+  <text x="600" y="945" text-anchor="middle" font-size="11" fill="#94a3b8">Arrows show request flow: Client → API (middleware + routes) → Services → Repositories → Database</text>
+</svg>
