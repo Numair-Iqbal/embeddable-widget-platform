@@ -18,25 +18,28 @@ Built as the capstone project for the **FlyRank AI — Backend Engineering Inter
 
 ---
 
-## Overview
+## 🔍 Overview
 
-Any website can drop in a single `<script>` tag to render a widget — a signup form, a promotional popover, or a call-to-action. Every visitor submission is captured, spam-filtered, rate-limited, and geo-enriched in real time, then made available in a secure, owner-only dashboard where the widget's owner can search, filter, edit, delete, and export their data.
+Any website can embed a single `<script>` tag to render a fully functional widget — a signup form, a promotional popover, or a call-to-action banner. Every visitor submission is captured in real time, run through spam filtering and rate limiting, enriched with geolocation data, and instantly surfaced in a secure, owner-only dashboard where the widget's owner can search, filter, edit, delete, and export their data.
 
-The project was built end-to-end: schema design → REST API → auth & security → owner dashboard → automated test suite, matching the exact "Definition of Done" set out in the FlyRank capstone brief (CORS handling, payload validation, rate limiting, geo-provider fallback — all covered by dedicated automated tests).
-
+The project was built end-to-end — schema design → REST API → authentication & security → owner dashboard → automated test suite — matching the exact **Definition of Done** set out in the FlyRank capstone brief: CORS handling, payload validation, rate limiting, and geo-provider fallback, each covered by dedicated automated tests.
+<br>
 ## 📄 Full Project Report
 
-A complete technical report of this project is available as a PDF.
+A complete technical report of this project is available as a PDF, covering the system end-to-end:
 
-It includes:
-- Background and objectives  
-- System architecture  
-- Database design  
-- API reference  
-- Security implementation  
-- Testing and results  
+| | |
+|---|---|
+| 🎯 | Background & objectives |
+| 🏗️ | System architecture |
+| 🗄️ | Database design |
+| 🔌 | API reference |
+| 🔐 | Security implementation |
+| ✅ | Testing & results |
 
-**📎 [View Full Report](docs/capstone-project-report.pdf)**
+<p align="center">
+  <a href="docs/capstone-project-report.pdf"><b>📎 View Full Report (PDF)</b></a>
+</p>
 
 ## Architecture
 
@@ -291,6 +294,7 @@ Widget is permanently removed from the database, confirmed by the success messag
 </td>
 </tr>
 </table>
+
 ## 🗄️ Database Schema
 
 Three tables — `owners`, `widgets`, `submissions` — linked by `owner_id` and `widget_id` foreign keys that enforce tenant isolation at the database level, with indexes on the columns used for lookups and sorting.
