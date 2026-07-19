@@ -175,27 +175,171 @@ Tests:       41 passed, 41 total
   <img src="screenshots/09-tests-passing.png" alt="All Tests Passing" width="700">
 </p>
 
-## API Documentation (Postman)
+## 📸 API Testing Screenshots
 
-The full API is documented and testable via a Postman collection (`docs/api-collection.postman_collection.json`), organized into **Auth**, **Widgets**, and **Submissions** folders, with example responses recorded for each request:
+All endpoints were tested using Postman. Screenshots below confirm each request/response, including a live tenant-isolation check.
 
+<table>
+<tr>
+<td width="50%">
 
-| Request | Result |
-|---|---|
-| ✅ `POST /register` | `201 Created` — password hashed with bcrypt before storage |
-| ✅ `POST /login` | `200 OK` — returns a signed JWT for authenticating future requests |
-| 🔒 `GET /profile` (with token) | `200 OK` — authorized |
-| 🔒 `GET /profile` (no/invalid token) | `401 Unauthorized` — blocked |
+### ✅ Health Check
+`GET /health` → Status `200 OK`
 
-## Database Schema
+Confirms the server is up and reachable before any other test runs.
+
+<img src="screenshots/01-GET-Health-Check.png" width="100%">
+
+</td>
+<td width="50%">
+
+### ✅ Register — Success
+`POST /auth/register` → Status `201 Created`
+
+A new owner account is created; the password is hashed with `bcrypt` before being stored.
+
+<img src="screenshots/02-POST-Register-User.png" width="100%">
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### ✅ Login — Success
+`POST /auth/login` → Status `200 OK`
+
+Valid credentials return a signed JWT, used to authenticate every request that follows.
+
+<img src="screenshots/03-POST-Login-User.png" width="100%">
+
+</td>
+<td width="50%">
+
+### 🔒 Create Widget
+`POST /widgets` → Status `201 Created`
+
+Authenticated request creates a new widget, automatically scoped to the logged-in owner.
+
+<img src="screenshots/04-POST-Create-Widget.png" width="100%">
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🔒 List Widgets
+`GET /widgets` → Status `200 OK`
+
+Returns every widget belonging to the authenticated owner.
+
+<img src="screenshots/05-GET-All-Widgets.png" width="100%">
+
+</td>
+<td width="50%">
+
+### 🔒 Get Single Widget
+`GET /widgets/:id` → Status `200 OK`
+
+Returns full widget details for one ID — owner-scoped.
+
+<img src="screenshots/06-GET-Single-Widget.png" width="100%">
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🔒 Update Widget
+`PUT /widgets/:id` → Status `200 OK`
+
+The widget's title, copy text, and fields are updated with the new payload.
+
+<img src="screenshots/07-PUT-Update-Widget.png" width="100%">
+
+</td>
+<td width="50%">
+
+### ✅ Login — Second Owner
+`POST /auth/login` → Status `200 OK`
+
+A second, independent owner account logs in with its own JWT — set up specifically to test tenant isolation.
+
+<img src="screenshots/08-POST-Login-Second-User.png" width="100%">
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🛡️ Tenant Isolation Test
+`GET /widgets/:id` (second owner) → Status `404 Not Found`
+
+The second owner tries to access the first owner's widget and is correctly blocked — API returns `404` instead of leaking that the widget exists, which is the safer pattern.
+
+<img src="screenshots/09-GET-Tenant-Isolation-Test.png" width="100%">
+
+</td>
+<td width="50%">
+
+### 🔒 Delete Widget
+`DELETE /widgets/:id` → Status `200 OK`
+
+Widget is permanently removed from the database, confirmed by the success message.
+
+<img src="screenshots/10-DELETE-Widget.png" width="100%">
+
+</td>
+</tr>
+</table>
+## 🗄️ Database Schema
 
 Three tables — `owners`, `widgets`, `submissions` — linked by `owner_id` and `widget_id` foreign keys that enforce tenant isolation at the database level, with indexes on the columns used for lookups and sorting.
 
 <table>
 <tr>
-<td align="center"><img src="screenshots/08-database-owners.png" alt="Owners Table" width="270"><br><sub><b>owners</b></sub></td>
-<td align="center"><img src="screenshots/06-database-widgets.png" alt="Widgets Table" width="270"><br><sub><b>widgets</b></sub></td>
-<td align="center"><img src="screenshots/07-database-submissions.png" alt="Submissions Table" width="270"><br><sub><b>submissions</b></sub></td>
+<td width="33%">
+
+<h3>👤 Owners Table</h3>
+
+Table: `owners`
+
+Stores each registered account — email and `bcrypt`-hashed password. Every widget and submission is ultimately scoped back to an `owner_id` here.
+
+<img src="screenshots/08-database-owners.png" width="100%">
+
+</td>
+<td width="33%">
+
+<h3>🧩 Widgets Table</h3>
+
+Table: `widgets`
+
+Holds every widget's configuration — type, title, copy text, fields, and targeting rules — linked to its creator via `owner_id`.
+
+<img src="screenshots/06-database-widgets.png" width="100%">
+
+</td>
+<td width="33%">
+
+<h3>📝 Submissions Table</h3>
+
+Table: `submissions`
+
+Captures every visitor submission linked to a `widget_id`, enriched with geo data and flagged for spam before being stored.
+
+<img src="screenshots/07-database-submissions.png" width="100%">
+
+</td>
+</tr>
+</table>
+
+### 📝 Submissions Table
+
+Captures every visitor submission linked to a `widget_id`, enriched with geo data and flagged for spam before being stored.
+
+<img src="screenshots/07-database-submissions.png" width="100%">
+
+</td>
 </tr>
 </table>
 
