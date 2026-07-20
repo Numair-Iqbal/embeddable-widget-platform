@@ -164,7 +164,7 @@ npm test
 | Suite | Tests | Covers |
 |---|---|---|
 | `auth.test.js` | 9 | Register, login, duplicate-email rejection, protected-route access |
-| `widgets.test.js` | 11 | Widget CRUD, **owner isolation** |
+| `widgets.test.js` | 12 | Widget CRUD, **owner isolation** |
 | `submissions.test.js` | 12 | Honeypot spam detection, invalid/oversized payload rejection, valid submission flow, **rate limiting**, Edit/Delete with owner isolation |
 | `cors.test.js` | 3 | Preflight requests from allowed / disallowed origins |
 | `geo.test.js` | 5 | Provider fallback chain — mocked, deterministic, no real network calls |
